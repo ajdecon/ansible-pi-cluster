@@ -41,6 +41,8 @@
     action: apt pkg=openmpi-bin state=installed
   - name: install openmpi docs
     action: apt pkg=openmpi-doc state=installed
+  - name: install openmpi dev packages
+    action: apt pkg=libopenmpi-dev state=installed
   - name: install ansible
     action: pip name=ansible 
   - name: install git

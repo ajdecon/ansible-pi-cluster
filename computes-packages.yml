@@ -7,10 +7,10 @@
     action: copy src=/etc/hosts dest=/etc/hosts
   - name: point dns at google
     action: template src=templates/resolv.conf.j2 dest=/etc/resolv.conf
+  - name: update apt-cache
+    action: command apt-get -y update
   - name: install python-apt
     action: command apt-get -y install python-apt
-  - name: update apt cache
-    action: apt update_cache=yes
   - name: install python-dev
     action: apt pkg=python-dev state=installed
   - name: install python-setuptools

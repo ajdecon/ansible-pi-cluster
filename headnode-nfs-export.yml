@@ -1,0 +1,11 @@
+---
+- hosts: headnode
+  user: pi
+  sudo: yes
+  tasks:
+  - name: configure nfs
+    action: template src=templates/exports.j2 dest=/etc/exports 
+  - name: nfs is running
+    action: service name=nfs-kernel-server state=started
+  - name: exportfs
+    action: command exportfs -a

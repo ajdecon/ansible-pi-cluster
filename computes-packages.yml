@@ -3,6 +3,8 @@
   user: pi
   sudo: yes
   tasks:
+  - name: point dns at pihead
+    action: template src=templates/resolv.conf.j2 dest=/etc/resolv.conf
   - name: install python-apt
     action: command apt-get -y install python-apt
   - name: update apt cache

@@ -3,4 +3,5 @@
 - include: headnode-iptables.yml
 - include: headnode-dnsmasq.yml
 - include: headnode-slurm.yml
+- include: headnode-nfs-export.yml
 - include: headnode-ansible-src.yml

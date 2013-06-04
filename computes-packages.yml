@@ -35,5 +35,6 @@
     action: apt pkg=slurm-llnl state=installed
   - name: install openmpi
     action: apt pkg=openmpi-bin state=installed
-
+  - name: install hpcc
+    action: apt pkg=hpcc state=installed
 

@@ -1,0 +1,35 @@
+---
+- hosts: computes
+  user: pi
+  sudo: yes
+  tasks:
+  - name: install python-apt
+    action: command apt-get -y install python-apt
+  - name: update apt cache
+    action: apt update_cache=yes
+  - name: install python-dev
+    action: apt pkg=python-dev state=installed
+  - name: install python-setuptools
+    action: apt pkg=python-setuptools state=installed
+  - name: install pip
+    action: easy_install name=pip
+  - name: install pyzmq
+    action: pip name=pyzmq state=present
+  - name: install pyasn1
+    action: pip name=pyasn1 state=present
+  - name: install PyCrypto
+    action: pip name=PyCrypto state=present
+  - name: install python-keyczar
+    action: pip name=python-keyczar state=present
+  - name: start fireball
+    action: fireball
+
+- hosts: computes
+  connection: fireball
+  tasks:
+  - name: install slurm
+    action: apt pkg=slurm-llnl state=installed
+  - name: install openmpi
+    action: apt pkg=openmpi-bin state=installed
+
+

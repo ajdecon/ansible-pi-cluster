@@ -58,3 +58,9 @@
     with_items:
     - nfs-common
     - nfs-kernel-server
+  - name: install modules
+    action: apt pkg=environment-modules state=installed
+  - name: install gfortran
+    action: apt pkg=gfortran state=installed
+  - name: install lapack
+    action: apt pkg=liblapack-dev state=installed

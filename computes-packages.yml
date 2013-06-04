@@ -37,4 +37,5 @@
     action: apt pkg=openmpi-bin state=installed
   - name: install hpcc
     action: apt pkg=hpcc state=installed
-
+  - name: install lapack
+    action: pat pkg=liblapack-dev state=installed

@@ -3,6 +3,8 @@
   user: pi
   sudo: yes
   tasks:
+  - name: rpcbind is running
+    action: service name=rpcbind state=started
   - name: configure nfs
     action: template src=templates/exports.j2 dest=/etc/exports 
   - name: nfs is running

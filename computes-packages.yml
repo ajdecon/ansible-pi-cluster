@@ -3,7 +3,9 @@
   user: pi
   sudo: yes
   tasks:
-  - name: point dns at pihead
+  - name: copy hosts 
+    action: copy src=/etc/hosts dest=/etc/hosts
+  - name: point dns at google
     action: template src=templates/resolv.conf.j2 dest=/etc/resolv.conf
   - name: install python-apt
     action: command apt-get -y install python-apt

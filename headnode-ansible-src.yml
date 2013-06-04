@@ -1,0 +1,7 @@
+---
+- hosts: headnode
+  user: pi
+  sudo: yes
+  tasks:
+  - name: download this repo
+    action: "git repo=https://bitbucket.org/ajdecon/ansible-pi-cluster.git dest=/home/pi/ansible-pi-cluster"

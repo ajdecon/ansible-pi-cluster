@@ -1,0 +1,6 @@
+---
+- include: headnode-packages.yml
+- include: headnode-iptables.yml
+- include: headnode-dnsmasq.yml
+- include: headnode-slurm.yml
+- include: headnode-ansible-src.yml

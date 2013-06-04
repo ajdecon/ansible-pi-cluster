@@ -1,0 +1,58 @@
+---
+- hosts: headnode
+  user: pi
+  sudo: yes
+  tasks:
+  - name: install python-apt
+    action: command apt-get -y install python-apt
+  - name: update apt cache
+    action: apt update_cache=yes
+  - name: install python-dev
+    action: apt pkg=python-dev state=installed
+  - name: install python-setuptools
+    action: apt pkg=python-setuptools state=installed
+  - name: install pip
+    action: easy_install name=pip
+  - name: install pyzmq
+    action: pip name=pyzmq state=present
+  - name: install pyasn1
+    action: pip name=pyasn1 state=present
+  - name: install PyCrypto
+    action: pip name=PyCrypto state=present
+  - name: install python-keyczar
+    action: pip name=python-keyczar state=present
+  - name: start fireball
+    action: fireball
+
+- hosts: headnode
+  connection: fireball
+  tasks:
+  - name: install vim
+    action: apt pkg=vim-gtk state=installed
+  - name: install pdsh
+    action: apt pkg=pdsh state=installed
+  - name: install slurm
+    action: apt pkg=slurm-llnl state=installed
+  - name: install slurm docs
+    action: apt pkg=slurm-llnl-doc state=installed
+  - name: install slurm torque wrappers
+    action: apt pkg=slurm-llnl-torque state=installed
+  - name: install openmpi
+    action: apt pkg=openmpi-bin state=installed
+  - name: install openmpi docs
+    action: apt pkg=openmpi-doc state=installed
+  - name: install ansible
+    action: pip name=ansible 
+  - name: install git
+    action: apt pkg=git state=installed
+  - name: install screen
+    action: apt pkg=screen state=installed
+  - name: install dnsmasq
+    action: apt pkg=dnsmasq state=installed
+  - name: install dnsutils
+    action: apt pkg=dnsutils state=installed
+  - name: install nfs
+    action: apt pkg=$item state=installed
+    with_items:
+    - nfs-common
+    - nfs-kernel-server

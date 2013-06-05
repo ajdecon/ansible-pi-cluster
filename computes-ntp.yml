@@ -1,0 +1,20 @@
+---
+- hosts: computes
+  user: pi
+  sudo: yes
+  tasks:
+  - action: fireball
+
+- hosts: computes
+  connection: fireball
+  tasks:
+  - name: ntp is running
+    action: service name=ntp state=started
+  - name: configure ntp
+    action: template src=templates/ntp.conf.j2 dest=/etc/ntp.conf
+    notify:
+    - restart ntp
+
+  handlers:
+  - name: restart ntp
+    action: service name=ntp state=restarted

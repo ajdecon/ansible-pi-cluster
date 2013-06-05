@@ -64,3 +64,9 @@
     action: apt pkg=gfortran state=installed
   - name: install lapack
     action: apt pkg=liblapack-dev state=installed
+  - name: install ganglia
+    action: apt pkg=ganglia-monitor state=installed
+  - name: install gmetad
+    action: apt pkg=gmetad state=installed
+  - name: install ganglia frontend
+    action: apt pkg=ganglia-webfrontend state=installed

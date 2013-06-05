@@ -38,4 +38,6 @@
   - name: install hpcc
     action: apt pkg=hpcc state=installed
   - name: install lapack
-    action: pat pkg=liblapack-dev state=installed
+    action: apt pkg=liblapack-dev state=installed
+  - name: install ganglia
+    action: apt pkg=ganglia-monitor state=installed

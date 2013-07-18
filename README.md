@@ -11,7 +11,8 @@ a shot. :)  It should at least be pretty straightforward to read and understand
 the playbooks.
 
 Ansible is a really cool tool for automating system configuration tasks, so 
-I automated most of the software configuration with Ansible. 
+I automated most of the software configuration with Ansible playbooks.
+However, I did all the OS provisioning and networking manually.
 This set of playbooks will set up an HPC cluster with some of the following 
 libraries and services:
 

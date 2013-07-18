@@ -10,9 +10,10 @@ if you want to try to use this to build your own cluster, feel free to give it
 a shot. :)  It should at least be pretty straightforward to read and understand
 the playbooks.
 
-Ansible is a really cool tool for automating system configuration tasks, so 
-I automated most of the software configuration with Ansible playbooks.
-However, I did all the OS provisioning and networking manually.
+Ansible is a really cool tool for automating system configuration and deployment tasks.
+(However, this particular set of playbooks is a bit of a mess, and I'm meaning to split it up
+to conform to the new [roles](http://www.ansibleworks.com/docs/playbooks.html#roles)
+system introduced in Ansible 1.2... watch this space.)
 This set of playbooks will set up an HPC cluster with some of the following 
 libraries and services:
 
@@ -20,7 +21,7 @@ libraries and services:
 * Message-passing library: [OpenMPI](http://www.open-mpi.org/)
 * Benchmark: HPCC
 * Shared filesystem: NFS
-* Time serever: NTP
+* Time server: NTP
 * DNS: dnsmasq
 * Performance montioring: Ganglia
 

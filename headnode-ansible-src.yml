@@ -3,6 +3,6 @@
   user: pi
   tasks:
   - name: download this repo
-    action: "git repo=https://bitbucket.org/ajdecon/ansible-pi-cluster.git dest=/home/pi/ansible-pi-cluster"
+    action: "git repo=https://github.com/ajdecon/ansible-pi-cluster dest=/home/pi/ansible-pi-cluster"
   - name: git pull
     action: "shell cd /home/pi/ansible-pi-cluster && git pull"

@@ -1,0 +1,6 @@
+---
+- include: computes-packages.yml
+- include: computes-slurm.yml
+- include: computes-nfs.yml
+- include: computes-ntp.yml
+- include: computes-ganglia.yml

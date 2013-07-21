@@ -1,0 +1,14 @@
+---
+- hosts: computes 
+  user: pi
+  sudo: yes
+  roles:
+  - fireball
+
+- hosts: computes
+  connection: fireball
+  roles:
+  - common
+  - network_client
+  - slurm
+  - gmond

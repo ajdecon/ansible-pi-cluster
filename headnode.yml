@@ -1,0 +1,16 @@
+---
+- hosts: headnode
+  user: pi
+  sudo: yes
+  roles:
+  - fireball
+
+- hosts: headnode
+  connection: fireball
+  roles:
+  - common
+  - headnode
+  - slurm
+  - gmetad
+  - gmond
+  - ansible-deploy

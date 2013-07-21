@@ -1,7 +1,0 @@
----
-- hosts: computes
-  user: pi
-  sudo: yes
-  tasks:
-  - name: start gmond
-    action: service name=ganglia-monitor state=started

@@ -1,0 +1,10 @@
+---
+  - name: destination location exists
+    action: file path=/home/pi/ansible-pi-cluster state=directory owner=pi group=pi mode=0755   
+  - name: download this repo
+    action: "git repo=https://github.com/ajdecon/ansible-pi-cluster dest=/home/pi/ansible-pi-cluster"
+  - name: git pull
+    action: "shell cd /home/pi/ansible-pi-cluster && git pull"
+  - name: repo owned by pi 
+    action: file path=/home/pi/ansible-pi-cluster state=directory owner=pi group=pi recurse=yes 
+

@@ -11,9 +11,6 @@ a shot. :)  It should at least be pretty straightforward to read and understand
 the playbooks.
 
 Ansible is a really cool tool for automating system configuration and deployment tasks.
-(However, this particular set of playbooks is a bit of a mess, and I'm meaning to split it up
-to conform to the new [roles](http://www.ansibleworks.com/docs/playbooks.html#roles)
-system introduced in Ansible 1.2... watch this space.)
 This set of playbooks will set up an HPC cluster with some of the following 
 libraries and services:
 
@@ -89,7 +86,7 @@ names or IPs of the compute nodes.
 You should (hopefully) be able to set up all the cluster services using the following
 command:
 
-    ansible-playbook -i hosts.pi headnode-main.yml
+    ansible-playbook -i hosts.pi headnode.yml
 
 Ansible configuration of compute nodes
 --------------------------------------
@@ -100,7 +97,7 @@ head node.
 SSH into the head node as "pi" and confirm that this repo is present as "ansible-pi-cluster".
 Then you should be able to just run
 
-    ansible-playbook -i hosts.pi computes-main.yml
+    ansible-playbook -i hosts.pi computes.yml
 
 And with luck, you should then have your SLURM cluster!
 

@@ -1,0 +1,35 @@
+---
+  - name: install headnode packages from apt
+    action: apt pkg={{item}} state=installed
+    with_items:
+    - git
+    - screen
+    - environment-modules
+    - gfortran
+    - dnsmasq
+    - dnsutils
+    - nfs-kernel-server
+    - nfs-common
+
+  - name: install ansible
+    action: pip name=ansible state=latest 
+
+  - name: configure nfs
+    action: template src=exports.j2 dest=/etc/exports   
+  - name: rpcbind is running
+    action: service name=rpcbind state=started enabled=yes
+  - name: nfs is running
+    action: service name=nfs-kernel-server state=started enabled=yes
+  - name: exportfs
+    action: command exportfs -a
+
+  - name: copy iptables config
+    action: copy src=iptables-nat.txt dest=/etc/iptables-nat.txt
+  - name: restore iptables config
+    action: shell iptables-restore < /etc/iptables-nat.txt
+  - name: rc.local restores iptables
+    action: lineinfile dest=/etc/rc.local regexp=^iptables-restore line="iptables-restore < /etc/iptables-nat.txt"
+  - name: configure on forwarding
+    action: lineinfile dest=/etc/sysctl.conf regexp=^net.ipv4.ip_forward line=net.ipv4.ip_forward=1
+  - name: turn on forwarding
+    action: shell echo 1 > /proc/sys/net/ipv4/ip_forward

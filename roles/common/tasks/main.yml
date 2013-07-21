@@ -1,0 +1,12 @@
+---
+  - name: install common packages
+    action: apt pkg={{item}} state=installed
+    with_items:
+    - openmpi-bin
+    - openmpi-doc
+    - libopenmpi-dev
+    - hpcc
+    - liblapack-dev
+    - vim-gtk
+    - pdsh
+

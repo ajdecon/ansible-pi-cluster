@@ -1,0 +1,30 @@
+---
+  - name: install munge key
+    action: copy src=munge.key dest=/etc/munge/munge.key owner=munge group=munge mode=0600
+    notify:
+    - restart munge
+
+  - name: munge is started
+    action: service name=munge state=started
+
+  - name: install slurm packages
+    action: apt pkg={{item}} state=installed
+    with_items:
+    - slurm-llnl
+    - slurm-llnl-doc
+    - slurm-llnl-torque
+
+
+  - name: touch slurm log file
+    action: command touch /var/log/slurm_jobacct.log
+  - name: slurm log file ownership
+    action: file dest=/var/log/slurm_jobacct.log owner=slurm state=file
+
+  - name: slurm is configured
+    action: template src=slurm.conf.j2 dest=/etc/slurm-llnl/slurm.conf owner=slurm
+    notify:
+    - restart slurm
+
+  - name: slurm is started
+    action: service name=slurm-llnl state=started
+

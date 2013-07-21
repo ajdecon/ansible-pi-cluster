@@ -1,0 +1,22 @@
+---
+  - name: install packages for gmetad
+    action: apt pkg=$item state=installed
+    with_items:
+    - ganglia-monitor
+    - ganglia-webfrontend
+    - apache2
+
+  - name: start apache
+    action: service name=apache2 state=started
+  - name: configure apache
+    action: template src=ganglia.conf.j2 dest=/etc/apache2/conf.d/ganglia.conf
+    notify:
+    - restart apache2
+
+  - name: start gmond
+    action: service name=ganglia-monitor state=started
+    ignore_errors: yes
+
+  - name: start gmetad
+    action: service name=gmetad state=started
+    ignore_errors: yes

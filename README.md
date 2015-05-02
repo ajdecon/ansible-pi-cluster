@@ -1,6 +1,13 @@
 Ansible scripts for my Raspberry Pi Cluster
 ===========================================
 
+**Note: this repository is no longer being developed. My active development
+of Ansible playbooks for HPC can be found as part of the
+[ansible-simple-slurm-cluster](https://github.com/ajdecon/ansible-simple-slurm-cluster)
+repo.**
+
+--------------------
+
 This is a small collection of 
 [Ansible](http://ansible.cc) playbooks for my Raspberry Pi cluster.
 
